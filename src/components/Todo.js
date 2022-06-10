@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TodoForm from "./TodoForm";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
+import { VscCheck } from "react-icons/vsc";
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 const [edit, setEdit] = useState({
@@ -30,14 +31,14 @@ return todos.map((todo, index) => (
         {todo.text}
     </div>
     <div className="icons">
+        <VscCheck 
+        onClick={()=> completeTodo(todo.id)} className="check-icon"/>
         <RiCloseCircleLine
         onClick={() => removeTodo(todo.id)}
-        className="delete-icon"
-        />
+        className="delete-icon" />
         <TiEdit
         onClick={() => setEdit({ id: todo.id, value: todo.text })}
-        className="edit-icon"
-        />
+        className="edit-icon" />
     </div>
     </div>
 ));
